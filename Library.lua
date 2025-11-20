@@ -6339,32 +6339,19 @@ else
 	Fluent = Library
 end
 
--- Minimize Button
+-- Minimize Button (icon fills the entire button)
 local MinimizeButton = New("TextButton", {
 	BackgroundTransparency = 1,
 	Size = UDim2.new(1, 0, 1, 0),
 	BorderSizePixel = 0,
 	ZIndex = 10,
 }, {
-	-- Optional padding inside the button
-	New("UIPadding", {
-		PaddingBottom = UDim.new(0, 2),
-		PaddingLeft = UDim.new(0, 2),
-		PaddingRight = UDim.new(0, 2),
-		PaddingTop = UDim.new(0, 2),
-	}),
-	-- Icon filling the button
 	New("ImageLabel", {
 		Image = "rbxassetid://94858886314945", -- your custom icon
-		Size = UDim2.new(1, 0, 1, 0),          -- fill button
+		Size = UDim2.new(1, 0, 1, 0),           -- fill the whole button
 		Position = UDim2.new(0, 0, 0, 0),
 		BackgroundTransparency = 1,
-		ScaleType = Enum.ScaleType.Fit,        -- maintain aspect ratio
-	}, {
-		New("UIAspectRatioConstraint", {
-			AspectRatio = 1,
-			AspectType = Enum.AspectType.FitWithinMaxSize,
-		})
+		ScaleType = Enum.ScaleType.Stretch,     -- stretch to fill completely
 	})
 })
 
@@ -6394,7 +6381,7 @@ if Mobile then
 else
 	Minimizer = New("Frame", {
 		Parent = GUI,
-		Size = UDim2.new(0, 40, 0, 40),  -- visible button size for PC
+		Size = UDim2.new(0, 40, 0, 40),  -- PC button size
 		Position = UDim2.new(0.45, 0, 0.025, 0),
 		BackgroundTransparency = 1,
 		ZIndex = 999999999,
@@ -6412,11 +6399,6 @@ else
 		})
 	})
 end
-
-
-
-
-
 
 
 
