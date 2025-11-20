@@ -6330,49 +6330,54 @@ end
 
 
 
-
-
+-- Make Fluent global
 if getgenv then
 	getgenv().Fluent = Library
 else
 	Fluent = Library
 end
 
--- Minimize Button (icon fills button with corners)
+-- Create Minimize Button
 local MinimizeButton = New("TextButton", {
 	BackgroundTransparency = 1,
 	Size = UDim2.new(1, 0, 1, 0),
 	BorderSizePixel = 0,
+	AutoButtonColor = false,
 	ZIndex = 10,
 }, {
+
+	-- ICON: Exactly like Obsidian
 	New("ImageLabel", {
-		Image = "rbxassetid://94858886314945", -- your custom icon
-		Size = UDim2.new(1, 0, 1, 0),           -- fill the button
-		Position = UDim2.new(0, 0, 0, 0),
+		Image = "rbxassetid://94858886314945", -- your icon
+		Size = UDim2.fromScale(1, 1),         -- fill the button
+		Position = UDim2.fromScale(0, 0),
 		BackgroundTransparency = 1,
-		ScaleType = Enum.ScaleType.Stretch,     -- fill fully
+		ScaleType = Enum.ScaleType.Fit,
+		ZIndex = 11,
 	}, {
 		New("UICorner", {
-			CornerRadius = UDim.new(0.25, 0),  -- match button corner
+			CornerRadius = UDim.new(0, 10), -- round the actual icon
 		})
 	})
 })
 
--- Minimizer Frame
 local Minimizer
 
+-- MOBILE STYLE
 if Mobile then
 	Minimizer = New("Frame", {
 		Parent = GUI,
-		Size = UDim2.new(0.06, 0, 0.15, 0),
+		Size = UDim2.new(0.06, 0, 0.12, 0),
 		Position = UDim2.new(0.45, 0, 0.025, 0),
 		BackgroundTransparency = 1,
 		ZIndex = 999999999,
 	}, {
+
+		-- Background box (rounded)
 		New("Frame", {
 			BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-			Size = UDim2.new(1, 0, 1, 0),
-			BackgroundTransparency = 0.5,
+			BackgroundTransparency = 0.4,
+			Size = UDim2.fromScale(1, 1),
 			BorderSizePixel = 0,
 		}, {
 			New("UICorner", {
@@ -6381,29 +6386,26 @@ if Mobile then
 			MinimizeButton
 		})
 	})
+
+-- PC STYLE (hidden button frame)
 else
 	Minimizer = New("Frame", {
 		Parent = GUI,
-		Size = UDim2.new(0, 40, 0, 40),  -- PC button size
+		Size = UDim2.new(0, 32, 0, 32),
 		Position = UDim2.new(0.45, 0, 0.025, 0),
 		BackgroundTransparency = 1,
 		ZIndex = 999999999,
 	}, {
+
 		New("Frame", {
-			BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-			Size = UDim2.new(1, 0, 1, 0),
-			BackgroundTransparency = 0.5,
+			BackgroundTransparency = 1,
+			Size = UDim2.fromScale(1, 1),
 			BorderSizePixel = 0,
 		}, {
-			New("UICorner", {
-				CornerRadius = UDim.new(0.25, 0),
-			}),
 			MinimizeButton
 		})
 	})
 end
-
-
 
 
 
